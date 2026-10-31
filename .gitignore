@@ -1,0 +1,23 @@
+# bağımlılıklar ve araç çıktıları
+node_modules/
+__pycache__/
+.wix/
+kaynak/lighthouse/
+kaynak/ekran/
+
+# ham fotoğraflar (Drive'dan indirilenler, yüzlerce MB; işlenmiş hâlleri kaynak/img-cache'te)
+kaynak/drive/
+kaynak/drive2/*
+!kaynak/drive2/*.json
+kaynak/orijinal/
+
+# derleme çıktısı: python build.py yeniden üretir; fontlar ve kurum logoları ise yalnızca burada durur
+site/*
+!site/fonts/
+!site/img/
+site/img/*
+!site/img/kurumlar/
+
+# ilk taslaktan kalan kök HTML'ler ve assets/ (yerelde yedek, yeni site kullanmıyor)
+/*.html
+/assets/

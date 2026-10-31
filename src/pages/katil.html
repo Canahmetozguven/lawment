@@ -1,0 +1,90 @@
+---
+title: Katıl
+description: Lawment'e katılımcı, gönüllü ya da konuşmacı ve mentor olarak katıl. Beş departmanı tanı, başvuru formunu doldur.
+nav: katil
+---
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="label intro">Katıl</p>
+    <h1 data-split>Lawment'e katıl.</h1>
+    <p class="lead intro" style="--d:1">Lawment'e üç yoldan dahil olabilirsin: etkinliklere katılarak, gönüllü olarak ekibe girerek ya da konuşmacı ve mentor olarak deneyimini paylaşarak.</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="yollar">
+  <div class="wrap">
+    <h2 class="sr-only" id="yollar">Katılım yolları</h2>
+    <div class="paths paths--color" data-reveal="stagger">
+      <div class="path path--cobalt">
+        <p class="label">Katılımcı</p>
+        <h3>Etkinliklere gel.</h3>
+        <p>Lawment Fest, Comparena ve Back in Lawment başvuruları Instagram'da duyuruluyor. Hukuk öğrencisi ya da genç hukukçuysan hepsi senin için.</p>
+        <a class="arrow-link" href="https://instagram.com/lawment.der/" target="_blank" rel="noopener">Duyuruları takip et →</a>
+      </div>
+      <div class="path path--sun">
+        <p class="label">Gönüllü</p>
+        <h3>Ekibe gir.</h3>
+        <p>Beş departmandan birinde etkinlikleri birlikte kuralım. Gönüllülük; organizasyon, iletişim ve kurumsal ilişkilerde gerçek deneyim demek.</p>
+        <a class="arrow-link" href="#basvuru">Başvuru formu →</a>
+      </div>
+      <div class="path path--ink">
+        <p class="label">Konuşmacı ve mentor</p>
+        <h3>Deneyimini paylaş.</h3>
+        <p>Avukat, akademisyen ya da şirket hukukçusuysan panellerde, atölyelerde ve yarışma jürilerinde yer alabilirsin.</p>
+        <a class="arrow-link" href="#basvuru">Bize yaz →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section rule-top">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div>
+        <p class="label">Departmanlar</p>
+        <h2>Nerede çalışmak <span class="hl">istersin?</span></h2>
+      </div>
+      <p class="muted measure">Her gönüllü bir departmanda yer alır. Bir etkinlik, beş departmanın birlikte yürüttüğü ortak iştir.</p>
+    </div>
+    <div class="dept-rows" data-reveal="stagger">
+      <div class="dept-row dept--kurumsal"><span class="dept-dot"></span><h3>Kurumsal İlişkiler</h3><p>Sponsor ve paydaş görüşmeleri, iş birliği dosyaları, kurumlarla ilişki yönetimi.</p><span class="dept-size"><x-count dept="kurumsal"></x-count> kişi</span></div>
+      <div class="dept-row dept--uye-gelisim"><span class="dept-dot"></span><h3>Üye Gelişim</h3><p>Yeni üyelerin uyumu, eğitimler, üyelerin gelişim ve katılım programları.</p><span class="dept-size"><x-count dept="uye-gelisim"></x-count> kişi</span></div>
+      <div class="dept-row dept--proje"><span class="dept-dot"></span><h3>Proje ve İnovasyon</h3><p>Etkinlik içerikleri, yarışma kurguları, yeni format fikirleri.</p><span class="dept-size"><x-count dept="proje"></x-count> kişi</span></div>
+      <div class="dept-row dept--dijital"><span class="dept-dot"></span><h3>Dijital İletişim</h3><p>Instagram ve LinkedIn içerikleri, tasarım, web sitesi ve tanıtım.</p><span class="dept-size"><x-count dept="dijital"></x-count> kişi</span></div>
+      <div class="dept-row dept--yasal-finans"><span class="dept-dot"></span><h3>Yasal ve Finans</h3><p>Sözleşmeler, bütçe takibi, dernek mevzuatına uyum ve resmî yazışmalar.</p><span class="dept-size"><x-count dept="yasal-finans"></x-count> kişi</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section rule-top" id="basvuru">
+  <div class="wrap split">
+    <div class="stack" data-reveal>
+      <p class="label">Başvuru</p>
+      <h2>Başvuru formu</h2>
+      <p class="muted measure">Formu gönderdiğinde Üye Gelişim ekibimiz seninle iletişime geçer. Konuşmacı ya da mentor olmak istiyorsan bunu notlara yazman yeterli.</p>
+      <div class="media form-photo"><x-img name="ekip" alt="Lawment ekibi, renkli bir festival panosunun önünde toplu fotoğrafta" sizes="(max-width: 760px) 100vw, 45vw"></div>
+    </div>
+    <form class="form" data-form="Lawment gönüllü / katılım başvurusu" novalidate>
+      <div class="form-row">
+        <div class="field"><label for="j-ad">Ad soyad</label><input id="j-ad" name="ad" required autocomplete="name"></div>
+        <div class="field"><label for="j-mail">E-posta</label><input id="j-mail" name="eposta" type="email" required autocomplete="email"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="j-okul">Üniversite / kurum</label><input id="j-okul" name="kurum" required autocomplete="organization"></div>
+        <div class="field"><label for="j-durum">Durumun</label>
+          <select id="j-durum" name="durum"><option>Hukuk öğrencisi</option><option>Stajyer avukat</option><option>Avukat</option><option>Akademisyen</option><option>Diğer</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label for="j-yol">Nasıl katılmak istersin?</label>
+          <select id="j-yol" name="yol"><option>Gönüllü olarak ekibe</option><option>Konuşmacı ya da mentor olarak</option><option>Etkinliklere katılımcı olarak</option></select></div>
+        <div class="field"><label for="j-dept">İlgilendiğin departman</label>
+          <select id="j-dept" name="departman"><option>Henüz karar vermedim</option><option>Kurumsal İlişkiler</option><option>Üye Gelişim</option><option>Proje ve İnovasyon</option><option>Dijital İletişim</option><option>Yasal ve Finans</option></select></div>
+      </div>
+      <div class="field"><label for="j-not">Kendinden kısaca bahset</label><textarea id="j-not" name="not"></textarea></div>
+      <div class="consent"><input type="checkbox" id="j-kvkk" name="kvkk" required><label for="j-kvkk"><a href="kvkk.html" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum; kişisel verilerimin başvurumun değerlendirilmesi amacıyla işlenmesini kabul ediyorum.</label></div>
+      <div class="btn-row"><button class="btn btn--primary" type="submit">Başvurumu gönder <span class="arr" aria-hidden="true">→</span></button></div>
+      <p class="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
