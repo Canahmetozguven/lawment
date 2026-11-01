@@ -1331,25 +1331,28 @@ html:not(.anim) .fb-caps li { opacity: 1; translate: none; }  /* animasyonsuz h�
 .chapter-text p { color: var(--muted); max-width: 46ch; }
 .chapter-ref { display: flex; align-items: center; gap: 12px; font-size: .82rem; font-weight: 600; color: var(--cobalt); }
 .chapter-ref::before { content: ""; flex: none; width: 22px; height: 1px; background: currentColor; }
-.chapters-nav, .chapters-meter { display: none; }
+.chapters-nav { display: none; }
 
-.anim .chapters-track { position: relative; height: calc(100vh * (var(--ch-n, 4) * .85 + .6)); }
-.anim .chapters-stage { position: sticky; top: 0; height: 100vh; height: 100dvh; display: grid; align-items: center; padding-block: 92px 20px; overflow: hidden; }
-.anim .chapters-stage > .wrap { width: 100%; height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 18px; min-height: 0; }
-.anim .chapters-nav { display: flex; flex-wrap: wrap; gap: 8px; }
+/* animasyonlu hâl: kaydırmaya bağlı değil. Yıl düğmeleri zaman çizelgesi; dört yıl aynı hücrede üst üste durur,
+   bölümün yüksekliği en uzun yıla göre sabittir, geçişte sayfa oynamaz. */
+.anim .chapters-stage { padding-bottom: clamp(48px, 6vw, 88px); }
+.anim .chapters-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: clamp(24px, 3.5vw, 44px); }
 .chapters-nav button {
-  font: 700 .75rem/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; min-height: 44px; padding: 0 16px; cursor: pointer;
+  position: relative; overflow: hidden; font: 700 .75rem/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase;
+  min-height: 44px; padding: 0 18px; cursor: pointer;
   border: 1px solid var(--line); background: transparent; color: var(--ink); transition: background-color .3s, color .3s, border-color .3s;
 }
 .chapters-nav button:hover { border-color: var(--ink); }
 .chapters-nav button[aria-current="step"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.anim .chapters-list { position: relative; min-height: 0; }
-.anim .chapter { position: absolute; inset: 0; padding-block: 0; border-top: 0; opacity: 0; visibility: hidden; transition: opacity .6s var(--ease-out), visibility 0s .6s; }
+.chapters-play { margin-left: auto; }
+/* zaman çizgisi: aktif yılın düğmesinin altında dolar; dolunca main.js sıradaki yılı açar, fare/odak/duraklatma dondurur */
+.yb-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--paper); transform: scaleX(0); transform-origin: left; }
+.chapters-nav button[aria-current="step"] .yb-bar { animation: ch-fill var(--ch-dur, 7s) linear forwards; }
+.chapters.is-held .chapters-nav button .yb-bar { animation-play-state: paused; }  /* etkin düğmenin animation kısaltmasından daha özgül olmalı, yoksa duraklatma işlemez */
+@keyframes ch-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.anim .chapters-list { display: grid; }
+.anim .chapter { grid-area: 1 / 1; padding-block: 0; border-top: 0; opacity: 0; visibility: hidden; transition: opacity .6s var(--ease-out), visibility 0s .6s; }
 .anim .chapter.is-on { opacity: 1; visibility: visible; transition-delay: 0s; }
-.anim .chapters-meter { display: flex; align-items: center; gap: 20px; font: 700 .75rem/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.cm-line { position: relative; flex: 1; height: 1px; background: var(--line); overflow: hidden; }
-.cm-line i { position: absolute; inset: 0; background: var(--cobalt); transform-origin: left; transform: scaleX(var(--cm, .25)); transition: transform .6s var(--ease-out); }
-.cm-count { min-width: 56px; font-variant-numeric: tabular-nums; }
 
 @media (prefers-reduced-motion: no-preference) {
   /* fotoğraflar kaydırınca perdeyle açılır, içindeki görüntü yerine oturur */
@@ -1385,9 +1388,6 @@ html:not(.anim) .fb-caps li { opacity: 1; translate: none; }  /* animasyonsuz h�
   .chapter-text h3 { font-size: 1.9rem; }
   .chapter-count { font-size: 2.8rem; }
   .anim .chapter { align-content: start; }
-  .anim .chapters-stage { padding-block: 76px 16px; }
-  .anim .chapter .chapter-visual .media, .anim .chapter .chapter-card { max-height: 32dvh; width: 100%; }
-  .anim .chapter-ref { display: none; }
 }
 
 /* ince ayar: denetimden çıkan düzeltmeler */

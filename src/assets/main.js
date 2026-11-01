@@ -52,7 +52,7 @@ window.LM_READY = true;
     }
     if (timeline && animOn()) { fillTimeline(); }
     if (!reduce.matches) { progressEls.forEach(updateProgress); }
-    if (animOn()) { pinEls.forEach(updatePin); litEls.forEach(updateLit); if (updateChapters) { updateChapters(); } }
+    if (animOn()) { pinEls.forEach(updatePin); litEls.forEach(updateLit); }
     ticking = false;
   };
 
@@ -92,21 +92,23 @@ window.LM_READY = true;
     for (var i = 0; i < o.words.length; i++) { o.words[i].classList.toggle('on', i < lit); }
   }
 
-  /* ---------- [data-chapters]: sabitlenen hikâye ----------
-     Bölüm kaydırma süresince ekrana sabitlenir; ilerleme (0 → 1) bölüm sayısına bölünür ve aktif bölüm .is-on alır.
-     Animasyon yoksa (JS kapalı, hareketi azalt) bütün bölümler alt alta, normal düzende görünür. */
-  var updateChapters = null;
+  /* ---------- [data-chapters]: zamana bağlı hikâye ----------
+     Yıllar en yenisinden eskiye kendiliğinden ilerler. Zamanı, aktif yıl düğmesinin altındaki çizgi gösterir
+     (CSS animasyonu ch-fill; bitince animationend sıradaki yılı açar, sonuncudan sonra en yeniye döner).
+     Zaman şu durumlarda durur: bölüm ekranda değil, fare ya da klavye odağı bölümün üstünde, sekme gizli
+     ya da ziyaretçi "Duraklat"a bastı. Yıl düğmeleriyle istenen yıla geçilir.
+     Animasyon yoksa (JS kapalı, hareketi azalt) dört yıl alt alta, normal düzende görünür; kaydırmaya bağlı değildir. */
   var chaptersEl = document.querySelector('[data-chapters]');
-  if (chaptersEl) {
-    var chTrack = chaptersEl.querySelector('.chapters-track');
+  if (chaptersEl && animOn()) {
     var chItems = Array.prototype.slice.call(chaptersEl.querySelectorAll('.chapter'));
     var chBtns = Array.prototype.slice.call(chaptersEl.querySelectorAll('[data-chapter-go]'));
-    var chCount = chaptersEl.querySelector('[data-cm-count]');
-    var chLine = chaptersEl.querySelector('.cm-line');
+    var chPlay = chaptersEl.querySelector('[data-chapter-play]');
+    var chLive = chaptersEl.querySelector('[data-ch-live]');
+    var chStage = chaptersEl.querySelector('.chapters-stage');
     var chN = chItems.length;
-    var chActive = -1;
-    chaptersEl.style.setProperty('--ch-n', String(chN));
-    var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };
+    var chCur = -1, chStarted = false;
+    var chPaused = false, chHover = false, chFocus = false, chInView = false;
+
     // bölüm açılınca rakam 0'dan son değere sayar (HTML'de son değer yazılıdır)
     var chapterCount = function (el) {
       var target = parseFloat(el.getAttribute('data-count-to'));
@@ -120,9 +122,13 @@ window.LM_READY = true;
       };
       window.requestAnimationFrame(step);
     };
-    var setChapter = function (i) {
-      if (i === chActive) { return; }
-      chActive = i;
+    var holdChapters = function () {
+      chaptersEl.classList.toggle('is-held', chPaused || chHover || chFocus || !chInView || document.hidden);
+    };
+    var showChapter = function (i, manual) {
+      i = (i + chN) % chN;
+      if (i === chCur) { return; }
+      chCur = i;
       chItems.forEach(function (c, j) {
         c.classList.toggle('is-on', j === i);
         if (j === i) { c.setAttribute('aria-current', 'step'); } else { c.removeAttribute('aria-current'); }
@@ -130,34 +136,43 @@ window.LM_READY = true;
       chBtns.forEach(function (b, j) {
         if (j === i) { b.setAttribute('aria-current', 'step'); } else { b.removeAttribute('aria-current'); }
       });
-      if (chCount) { chCount.textContent = pad2(i + 1) + ' / ' + pad2(chN); }
-      // ekran okuyucu: bölüm kaydırmayla değişir, yeni bölümün yılı ve başlığı duyurulur
-      var live = chaptersEl.querySelector('[data-ch-live]');
-      var h = chItems[i].querySelector('h3');
-      var yr = chItems[i].querySelector('.chapter-meta span');
-      if (live && h && yr) { live.textContent = yr.textContent + ': ' + h.textContent; }
-      if (chLine) { chLine.style.setProperty('--cm', ((i + 1) / chN).toFixed(3)); }
+      // ekran okuyucu: kendiliğinden ilerlerken sessiz; ziyaretçi seçince ya da duraklatınca yeni yıl duyurulur
+      if (chLive) {
+        chLive.setAttribute('aria-live', manual || chPaused ? 'polite' : 'off');
+        var h = chItems[i].querySelector('h3');
+        var yr = chItems[i].querySelector('.chapter-meta span');
+        if (h && yr) { chLive.textContent = yr.textContent + ': ' + h.textContent; }
+      }
       var num = chItems[i].querySelector('[data-count-to]');
-      if (num && !reduce.matches) { chapterCount(num); }
+      if (num && chStarted && !reduce.matches) { chapterCount(num); }
     };
-    updateChapters = function () {
-      if (!animOn()) { return; }
-      var r = chTrack.getBoundingClientRect();
-      var span = chTrack.offsetHeight - window.innerHeight;
-      var p = span > 0 ? Math.min(0.9999, Math.max(0, -r.top / span)) : 0;
-      setChapter(Math.floor(p * chN));
-    };
-    // yıl düğmeleri: o bölümün kaydırma konumuna gider
-    chBtns.forEach(function (b, i) {
-      b.addEventListener('click', function () {
-        var top = chTrack.getBoundingClientRect().top + window.scrollY;
-        var span = chTrack.offsetHeight - window.innerHeight;
-        window.scrollTo({ top: top + ((i + 0.5) / chN) * span, behavior: 'smooth' });
-      });
-    });
-    window.addEventListener('resize', function () { updateChapters(); });
-  }
 
+    // ilk kez ekrana girince en yeni yıl açılır ve zaman başlar
+    new IntersectionObserver(function (entries) {
+      chInView = entries[0].isIntersecting;
+      if (chInView && !chStarted) { chStarted = true; showChapter(0); }
+      holdChapters();
+    }, { threshold: 0.3 }).observe(chStage);
+
+    chBtns.forEach(function (b, i) { b.addEventListener('click', function () { showChapter(i, true); }); });
+    chaptersEl.addEventListener('animationend', function (e) {
+      if (e.animationName === 'ch-fill') { showChapter(chCur + 1); }
+    });
+    if (chPlay) {
+      chPlay.addEventListener('click', function () {
+        chPaused = !chPaused;
+        chPlay.textContent = chPaused ? 'Oynat' : 'Duraklat';
+        holdChapters();
+      });
+    }
+    chStage.addEventListener('pointerenter', function () { chHover = true; holdChapters(); });
+    chStage.addEventListener('pointerleave', function () { chHover = false; holdChapters(); });
+    // yalnızca klavye odağı durdurur: fareyle tıklanan düğmede odak kalsa da zaman akmaya devam eder
+    chStage.addEventListener('focusin', function (e) { chFocus = e.target.matches(':focus-visible'); holdChapters(); });
+    chStage.addEventListener('focusout', function () { chFocus = false; holdChapters(); });
+    document.addEventListener('visibilitychange', holdChapters);
+    holdChapters();
+  }
   /* ---------- [data-progress]: öğenin ekrandan geçiş oranı (0 → 1) --p olarak yazılır;
      data-speed varsa buna göre --py (parallax kayması) da hesaplanır ---------- */
   var progressEls = Array.prototype.slice.call(document.querySelectorAll('[data-progress]'));
