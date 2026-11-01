@@ -40,12 +40,12 @@ NAV = [
 CACHE = ROOT / "kaynak" / "img-cache"  # kaynak/images.py çıktısı (tüm boyutlar)
 MANIFEST = json.loads((CACHE / "manifest.json").read_text(encoding="utf-8"))
 
-# Fontlar siteye gömülü (kaynak/fonts.py). Tek aile (Archivo) önceden yüklenir: büyük başlık sayfanın LCP'si
-# ve geç gelirse yeniden dizilip kaymaya yol açıyor. Diğerlerini önceden yüklemek görselle bant genişliği yarıştırıyor.
+# Fontlar siteye gömülü (kaynak/fonts.py). Yalnızca başlık yazısı (EB Garamond, dik) önceden yüklenir: büyük başlık
+# sayfanın LCP'si ve geç gelirse yeniden dizilip kaymaya yol açıyor. Diğerlerini önceden yüklemek görselle bant genişliği yarıştırıyor.
 FONT_PRELOADS = "\n".join(
     f'<link rel="preload" href="fonts/{f.name}" as="font" type="font/woff2" crossorigin>'
     for f in sorted((OUT / "fonts").glob("*.woff2"))
-    if f.name.startswith("archivo-normal-")
+    if f.name.startswith("eb-garamond-normal-")
 )
 
 
@@ -73,8 +73,7 @@ def head(meta, filename):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F1F2EE" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0E151C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F6F5F3">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 {FONT_PRELOADS}
@@ -105,6 +104,7 @@ def header(active):
     )
     katil = ' aria-current="page"' if active == "katil" else ""
     return f"""<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="read-progress" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Lawment Derneği ana sayfa">{BRAND}</a>
@@ -367,7 +367,7 @@ def photos_html(m):
         items = [it for it in PHOTOS.get(a["set"], []) if it["kind"] == a["kind"]][: int(a.get("count", 99))]
     sizes = a.get("sizes", "(max-width: 760px) 80vw, 30vw")
     lis = "".join(
-        f'<li class="zoom"><div class="media"><x-img name="{it["name"]}" alt="{html.escape(it["alt"], quote=True)}" sizes="{sizes}"></div></li>'
+        f'<li class="zoom"><div class="media" data-reveal="clip"><x-img name="{it["name"]}" alt="{html.escape(it["alt"], quote=True)}" sizes="{sizes}"></div></li>'
         for it in items
     )
     return f'<ul class="{a.get("class", "t-photos")}">{lis}</ul>'

@@ -12,6 +12,14 @@ node kaynak/kontrol.mjs                           # taşma, bağlantı, konsol, 
 
 `kontrol.mjs` için önce `kaynak/` içinde `npm install` çalıştırılır.
 
+## Önizleme (GitHub Pages)
+
+```
+python kaynak/onizleme.py                         # derler ve gh-pages dalına gönderir
+```
+
+Adres: https://canahmetozguven.github.io/lawment/ (yaklaşık bir dakikada güncellenir). Her sayfada `noindex` ve kökte `robots.txt` vardır; arama motorlarından gizlidir ama adresi bilen herkes açabilir. `gh-pages` dalı her seferinde sıfırdan yazılır, `main` değişmez. Depo ayarlarında Pages kaynağı "gh-pages dalı, / (kök)" olmalıdır. Gerçek yayın bu değil, Wix'e yükleme ([TESLIM.md](TESLIM.md)).
+
 ## Klasörler
 
 | Klasör | İçerik |

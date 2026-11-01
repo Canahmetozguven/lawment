@@ -26,11 +26,8 @@ window.LM_READY = true;
   /* ---------- tema düğmesi: seçim bu tarayıcıda hatırlanır ---------- */
   var themeBtn = document.querySelector('[data-theme-toggle]');
   if (themeBtn) {
-    var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
-    var isDark = function () {
-      var t = root.getAttribute('data-theme');
-      return t ? t === 'dark' : darkMq.matches;
-    };
+    // açık tema varsayılan: koyu tema yalnızca ziyaretçi düğmeyle seçerse açılır
+    var isDark = function () { return root.getAttribute('data-theme') === 'dark'; };
     var syncBtn = function () { themeBtn.setAttribute('aria-label', isDark() ? 'Açık temaya geç' : 'Koyu temaya geç'); };
     themeBtn.addEventListener('click', function () {
       var next = isDark() ? 'light' : 'dark';
@@ -47,12 +44,15 @@ window.LM_READY = true;
   var onScroll = function () {
     var y = window.scrollY;
     if (header) { header.classList.toggle('is-scrolled', y > 24); }
+    // okuma çubuğu: sayfanın ne kadarının okunduğu
+    var docH = root.scrollHeight - window.innerHeight;
+    root.style.setProperty('--sp', docH > 0 ? Math.min(1, y / docH).toFixed(4) : '0');
     if (heroImg && !reduce.matches && y < window.innerHeight * 1.2) {
       heroImg.style.setProperty('--py', (y * 0.08).toFixed(1) + 'px');
     }
     if (timeline && animOn()) { fillTimeline(); }
     if (!reduce.matches) { progressEls.forEach(updateProgress); }
-    if (animOn()) { pinEls.forEach(updatePin); litEls.forEach(updateLit); }
+    if (animOn()) { pinEls.forEach(updatePin); litEls.forEach(updateLit); if (updateChapters) { updateChapters(); } }
     ticking = false;
   };
 
@@ -90,6 +90,72 @@ window.LM_READY = true;
     if (lit === o.last) { return; }
     o.last = lit;
     for (var i = 0; i < o.words.length; i++) { o.words[i].classList.toggle('on', i < lit); }
+  }
+
+  /* ---------- [data-chapters]: sabitlenen hikâye ----------
+     Bölüm kaydırma süresince ekrana sabitlenir; ilerleme (0 → 1) bölüm sayısına bölünür ve aktif bölüm .is-on alır.
+     Animasyon yoksa (JS kapalı, hareketi azalt) bütün bölümler alt alta, normal düzende görünür. */
+  var updateChapters = null;
+  var chaptersEl = document.querySelector('[data-chapters]');
+  if (chaptersEl) {
+    var chTrack = chaptersEl.querySelector('.chapters-track');
+    var chItems = Array.prototype.slice.call(chaptersEl.querySelectorAll('.chapter'));
+    var chBtns = Array.prototype.slice.call(chaptersEl.querySelectorAll('[data-chapter-go]'));
+    var chCount = chaptersEl.querySelector('[data-cm-count]');
+    var chLine = chaptersEl.querySelector('.cm-line');
+    var chN = chItems.length;
+    var chActive = -1;
+    chaptersEl.style.setProperty('--ch-n', String(chN));
+    var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };
+    // bölüm açılınca rakam 0'dan son değere sayar (HTML'de son değer yazılıdır)
+    var chapterCount = function (el) {
+      var target = parseFloat(el.getAttribute('data-count-to'));
+      if (!isFinite(target)) { return; }
+      var t0 = null;
+      var step = function (t) {
+        if (t0 === null) { t0 = t; }
+        var k = Math.min(1, (t - t0) / 1400);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - k, 4))).toLocaleString('tr-TR');
+        if (k < 1) { window.requestAnimationFrame(step); }
+      };
+      window.requestAnimationFrame(step);
+    };
+    var setChapter = function (i) {
+      if (i === chActive) { return; }
+      chActive = i;
+      chItems.forEach(function (c, j) {
+        c.classList.toggle('is-on', j === i);
+        if (j === i) { c.setAttribute('aria-current', 'step'); } else { c.removeAttribute('aria-current'); }
+      });
+      chBtns.forEach(function (b, j) {
+        if (j === i) { b.setAttribute('aria-current', 'step'); } else { b.removeAttribute('aria-current'); }
+      });
+      if (chCount) { chCount.textContent = pad2(i + 1) + ' / ' + pad2(chN); }
+      // ekran okuyucu: bölüm kaydırmayla değişir, yeni bölümün yılı ve başlığı duyurulur
+      var live = chaptersEl.querySelector('[data-ch-live]');
+      var h = chItems[i].querySelector('h3');
+      var yr = chItems[i].querySelector('.chapter-meta span');
+      if (live && h && yr) { live.textContent = yr.textContent + ': ' + h.textContent; }
+      if (chLine) { chLine.style.setProperty('--cm', ((i + 1) / chN).toFixed(3)); }
+      var num = chItems[i].querySelector('[data-count-to]');
+      if (num && !reduce.matches) { chapterCount(num); }
+    };
+    updateChapters = function () {
+      if (!animOn()) { return; }
+      var r = chTrack.getBoundingClientRect();
+      var span = chTrack.offsetHeight - window.innerHeight;
+      var p = span > 0 ? Math.min(0.9999, Math.max(0, -r.top / span)) : 0;
+      setChapter(Math.floor(p * chN));
+    };
+    // yıl düğmeleri: o bölümün kaydırma konumuna gider
+    chBtns.forEach(function (b, i) {
+      b.addEventListener('click', function () {
+        var top = chTrack.getBoundingClientRect().top + window.scrollY;
+        var span = chTrack.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: top + ((i + 0.5) / chN) * span, behavior: 'smooth' });
+      });
+    });
+    window.addEventListener('resize', function () { updateChapters(); });
   }
 
   /* ---------- [data-progress]: öğenin ekrandan geçiş oranı (0 → 1) --p olarak yazılır;
@@ -346,10 +412,46 @@ window.LM_READY = true;
     }
   };
   window.LawmentForms = Forms;
+  /* hata metni alanın altında, Türkçe ve nedenini söyleyerek gösterilir; tarayıcının kendi balonu kullanılmaz */
+  var fieldSeq = 0;
+  var errText = function (el) {
+    if (el.validity.valueMissing) { return el.type === 'checkbox' ? 'Devam etmek için onay vermelisin.' : 'Bu alan zorunlu.'; }
+    if (el.validity.typeMismatch && el.type === 'email') { return 'Geçerli bir e-posta adresi yaz, örneğin ad@ornek.com.'; }
+    return 'Bu alanı kontrol et.';
+  };
+  var clearError = function (el) {
+    el.removeAttribute('aria-invalid');
+    el.removeAttribute('aria-describedby');
+    var old = document.getElementById(el.id + '-hata');
+    if (old) { old.remove(); }
+  };
+  var showError = function (el) {
+    clearError(el);
+    var p = document.createElement('p');
+    p.className = 'field-error';
+    p.id = el.id + '-hata';
+    p.textContent = errText(el);
+    var holder = el.closest('.field') || el.closest('.consent') || el.parentNode;
+    if (holder.classList.contains('consent')) { holder.after(p); } else { holder.appendChild(p); }
+    el.setAttribute('aria-invalid', 'true');
+    el.setAttribute('aria-describedby', p.id);
+  };
   document.querySelectorAll('form[data-form]').forEach(function (form) {
+    form.noValidate = true;
+    var fields = form.querySelectorAll('input, select, textarea');
+    fields.forEach(function (el) {
+      if (!el.id) { el.id = 'alan-' + (++fieldSeq); }
+      var recheck = function () { if (el.hasAttribute('aria-invalid') && el.checkValidity()) { clearError(el); } };
+      el.addEventListener('input', recheck);
+      el.addEventListener('change', recheck);
+    });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!form.reportValidity()) { return; }
+      var firstBad = null;
+      fields.forEach(function (el) {
+        if (el.checkValidity()) { clearError(el); } else { showError(el); firstBad = firstBad || el; }
+      });
+      if (firstBad) { firstBad.focus(); return; }
       var status = form.querySelector('.form-status');
       Forms.send(form.getAttribute('data-form'), Forms.collect(form)).then(function () {
         if (status) {

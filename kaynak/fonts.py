@@ -1,8 +1,10 @@
-"""Google Fonts'u siteye gömer (self-host): Archivo (değişken; genişlik 62–125, ağırlık 400–900).
+"""Google Fonts'u siteye gömer (self-host): EB Garamond (başlıklar; dik ve italik, ağırlık 400–700) ve
+DM Sans (metin; ağırlık 400–700).
 
 Yalnızca latin ve latin-ext alt kümeleri alınır (Türkçe karakterler latin-ext'te).
 Çıktı: site/fonts/*.woff2 ve src/assets/fonts.css. build.py fonts.css'i style.css'in başına ekler.
 Fontların hepsi SIL Open Font License ile dağıtılıyor; siteye gömülmeleri serbest.
+Çalıştırmadan önce site/fonts/ içindeki eski (artık kullanılmayan) .woff2 dosyalarını silin.
 
 Kullanım: python kaynak/fonts.py
 """
@@ -11,7 +13,8 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CSS_URL = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap"
+CSS_URL = ("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700"
+           "&family=DM+Sans:wght@400..700&display=swap")
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"}
 
 
