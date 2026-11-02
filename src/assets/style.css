@@ -994,7 +994,7 @@ h3 { font-weight: 500; letter-spacing: -.02em; line-height: 1.12; }
 .t-quote p { font: 400 italic 1.2rem/1.45 var(--f-display); }
 .story-media::after { background: var(--cobalt); }
 
-/* numaralar: Garamond, dosya numarası gibi */
+/* numaralar: dosya numarası gibi, başlık fontuyla */
 .values-n, .offer-n, .path::before { font: 400 1.7rem/1 var(--f-display); letter-spacing: 0; color: var(--cobalt); }
 .offer-n { color: var(--band-accent); }
 .values h3 { font-size: clamp(2.8rem, 8vw, 6.4rem); font-weight: 500; letter-spacing: -.04em; line-height: .98; }
@@ -1009,7 +1009,7 @@ h3 { font-weight: 500; letter-spacing: -.02em; line-height: 1.12; }
 .path, .leader, .member, .form, .facts, .dept, .org-tier, .yr-card, .media, .t-media--art, .badge, .form-status, .hero-media,
 .field input, .field select, .field textarea { border-radius: 0; }
 
-/* şerit: antrasit zeminde Garamond, yavaş akar */
+/* şerit: antrasit zeminde başlık fontuyla, yavaş akar */
 .tapes { padding-block: 0; }
 .tape { width: 100%; margin-left: 0; rotate: 0deg !important; box-shadow: none; }
 .marquee--band { background: var(--cobalt); color: var(--cobalt-ink); padding-block: 16px; font: 500 clamp(1.3rem, 2.2vw, 1.9rem)/1.2 var(--f-display); letter-spacing: .02em; font-style: normal; --mq-dur: 60s; }
