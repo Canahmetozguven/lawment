@@ -1,7 +1,7 @@
 /* Lawment Derneği — ortak stil
    Kimlik: derneğin kendi üç rengi: kırmızı #7A1212 (logodaki bordo), siyah #161313 ve kırık beyaz #F6F5F3; yazı beyaz.
    Başka renk yok. Koyu bantlarda vurgu kırık beyazla yapılır; kırmızı açık zeminde yazı ve çizgi, koyu zeminde dolgu olarak kullanılır.
-   Başlıklar EB Garamond (serif), metin DM Sans. Hareket yoğun, ama dilini hukuk belgesinden alır:
+   Yazı tipi derneğin eski sitesindeki Archivo (başlık ve metin tek aile). Hareket yoğun, ama dilini hukuk belgesinden alır:
    cetvel çizgileri çizilir, dosya numarasıyla ilerlenir, sayfalar çevrilir, rakamlar sayılır.
    Süs yerine gerçek fotoğraf. Tüm hareket prefers-reduced-motion: reduce altında kapanır.
    Not: --cobalt, --fest ve --sun adları tarihsel; --cobalt derneğin kırmızısı, --sun koyu zeminlerdeki açık vurgu.
@@ -25,8 +25,8 @@
   --fest: #7A1212;
   --sun: #F6F5F3;
 
-  --f-display: "EB Garamond", Georgia, "Times New Roman", serif;
-  --f-body: "DM Sans", "Segoe UI", system-ui, Arial, sans-serif;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --f-mono: var(--f-body);
 
   --s-1: clamp(3rem, 6.2vw, 5.75rem);
@@ -885,7 +885,7 @@ ul { margin: 0; padding: 0; }
 @media (prefers-reduced-motion: no-preference) {
   /* başlık: kelime kelime yükselir, ardından fosforlu kalem çekilir */
   /* alt pay yalnızca inen harflere (ş, ç, ğ, y, j) yer açar; başlangıç konumu kutunun tamamen altında kalır, harf uçları görünmez */
-  .split-h .w { display: inline-block; overflow: clip; padding-bottom: .18em; margin-bottom: -.18em; vertical-align: top; }
+  .split-h .w { display: inline-block; overflow: clip; padding-bottom: .18em; margin-bottom: -.18em; padding-inline-end: .2em; margin-inline-end: -.2em; vertical-align: top; }
   .split-h .w > span { display: inline-block; animation: rise 1s var(--ease-out) both; animation-delay: calc(120ms + var(--i) * 75ms); }
   .split-h .hl { animation: swipe .8s var(--ease-in-out) both; animation-delay: calc(250ms + var(--n) * 75ms + 350ms); }
   @keyframes rise { from { transform: translateY(135%); } to { transform: none; } }
@@ -1433,7 +1433,7 @@ html:not(.anim) .fb-caps li { opacity: 1; translate: none; }  /* animasyonsuz h�
 .proj-rows .arr { grid-column: 3; grid-row: 1; color: var(--sun); }
 .fc { padding: 8px 8px 34px; }
 .fc-cap { position: absolute; left: 12px; right: 12px; bottom: 9px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 700 .75rem/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: #161313; }
-@media (max-width: 860px) { .fc { padding: 5px 5px 30px; } .fc-cap { left: 8px; right: 8px; bottom: 8px; } }
+@media (max-width: 860px) { .fc { padding: 5px 5px 42px; } .fc-cap { left: 8px; right: 8px; bottom: 7px; white-space: normal; text-overflow: clip; line-height: 1.15; } }
 
 /* derneğin üç rengi: açık kart ve koyu bantta açık ilerleme çizgisi */
 .paths--color .path--sun { background: var(--paper-2); color: var(--ink); border-color: var(--line); }

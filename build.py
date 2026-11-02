@@ -40,12 +40,12 @@ NAV = [
 CACHE = ROOT / "kaynak" / "img-cache"  # kaynak/images.py çıktısı (tüm boyutlar)
 MANIFEST = json.loads((CACHE / "manifest.json").read_text(encoding="utf-8"))
 
-# Fontlar siteye gömülü (kaynak/fonts.py). Yalnızca başlık yazısı (EB Garamond, dik) önceden yüklenir: büyük başlık
-# sayfanın LCP'si ve geç gelirse yeniden dizilip kaymaya yol açıyor. Diğerlerini önceden yüklemek görselle bant genişliği yarıştırıyor.
+# Fontlar siteye gömülü (kaynak/fonts.py). Tek aile (Archivo) önceden yüklenir: büyük başlık sayfanın LCP'si
+# ve geç gelirse yeniden dizilip kaymaya yol açıyor. Latin-ext alt kümesi önceden yüklenmez; Türkçe karakter olunca iner.
 FONT_PRELOADS = "\n".join(
     f'<link rel="preload" href="fonts/{f.name}" as="font" type="font/woff2" crossorigin>'
     for f in sorted((OUT / "fonts").glob("*.woff2"))
-    if f.name.startswith("eb-garamond-normal-")
+    if f.name.startswith("archivo-normal-")
 )
 
 
