@@ -32,8 +32,9 @@ Kök klasördeki eski taslak HTML'ler ve `assets/` klasörü yedek olarak duruyo
 | Ana Sayfa | Lawment Fest'26 katılımcı sayısı (katılım çubuğu) |
 | Projeler | Fest'26 katılımcı sayısı · Lawment Fest 27 tarih ve yer · Comparena 27 tarihi · Comparena başvuru tarihleri ve takım kuralları · Back in Lawment tarih ve yer |
 | Arşiv | 2026 programına eklenecek diğer başlıklar · 2026 katılımcı sayısı · 2026'da yer alan kurumlar · 2027 tarih ve yerler |
-| Destek & İletişim | Banka adı · IBAN |
 | KVKK | Çerez/ölçüm araçları · hukuki sebep eşleştirmesi · barındırma ve e-posta sağlayıcıları, yurt dışı aktarım dayanağı · saklama süreleri · KEP adresi · çerez politikası · güncelleme tarihi |
+
+Banka adı ve IBAN sitede **yayımlanmıyor** (dernek istemedi). Destek & İletişim sayfasında bağış için e-posta adresi ve iletişim formundaki "Bağış" konusu gösteriliyor; hesap bilgisi eklenirse `iletisim.html` içindeki "Nasıl destek olabilirsin" kutusuna yazılır.
 
 KVKK sayfası **taslak**: en üstte "hukuki kontrol gerekli" uyarısı var ve arama motorlarına kapalı (`noindex`). Bir hukukçu onaylayınca `src/pages/kvkk.html` başındaki `noindex: true` satırı ve uyarı kutusu kaldırılmalı.
 
