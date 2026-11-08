@@ -1438,3 +1438,18 @@ html:not(.anim) .fb-caps li { opacity: 1; translate: none; }  /* animasyonsuz h�
 /* derneğin üç rengi: açık kart ve koyu bantta açık ilerleme çizgisi */
 .paths--color .path--sun { background: var(--paper-2); color: var(--ink); border-color: var(--line); }
 .fb-progress { background: var(--on-dark); }
+
+/* içerik düzeltmeleri (yönetim incelemesi, 7 Kasım 2026) */
+/* katılım: dört kart; geniş ekranda tek sıra, orta genişlikte 2x2, dar ekranda alt alta */
+.paths--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.paths--four .path h3 { font-size: clamp(1.35rem, 1.7vw, 1.6rem); overflow-wrap: anywhere; }
+@media (max-width: 1100px) { .paths--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .paths--four { grid-template-columns: 1fr; } }
+.paths--color .path--card { background: var(--card); color: var(--ink); border-color: var(--line); }
+/* hakkımızda: açılış cümlesi başlığın hemen altında öne çıkar */
+.lead--statement { font: 500 clamp(1.3rem, 2.2vw, 1.85rem)/1.32 var(--f-display); letter-spacing: -.012em; max-width: 34ch; color: var(--ink); text-wrap: pretty; }
+/* projeler: alt başlıklar ve uzun proje başlıkları */
+.proj-sub { font-size: clamp(1.15rem, 1.8vw, 1.4rem); letter-spacing: -.01em; line-height: 1.2; margin-top: 8px; }
+.project h2.h2--long { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.04; }
+/* ana sayfa misyon: başlığın altındaki açıklama */
+.lit-sec .lead { max-width: 58ch; color: var(--muted); }

@@ -248,7 +248,7 @@ DEPTS = [
     ("uye-gelisim", "Üye Gelişim"),
     ("proje", "Proje ve İnovasyon"),
     ("dijital", "Dijital İletişim"),
-    ("yasal-finans", "Yasal ve Finans"),
+    ("yasal-finans", "Yasallık ve Finans"),
 ]
 TEAM = [
     # Yönetim Kurulu
@@ -266,13 +266,15 @@ TEAM = [
     dict(ad="Tayfun Koçoğlu", rol="yr", dept=("dijital",)),
     dict(ad="Efe Kutay Alaçiçek", rol="yr", dept=("proje",)),
     dict(ad="Abdullah Emin Şimşek", rol="yr", dept=("proje",)),
+    # Yönetimin incelemesinde (7 Kasım 2026) Yürütme Kurulu'na, Yasallık ve Finans'a yazıldı; önceden Dijital İletişim üyesiydi.
+    dict(ad="Beyza Selen Çiçek", rol="yr", dept=("yasal-finans",)),
 ] + [dict(ad=n, rol="uye", dept=("uye-gelisim",)) for n in (
     "Sıla Uluç", "Hüsna Çökmez", "Ayşenur Güler", "İrem Büşra Güner", "Asel Nehir Pakşı", "Bengisu Bedir")
 ] + [dict(ad=n, rol="uye", dept=("kurumsal",)) for n in (
     "Firdevs Nur Sürer", "Cansu Bağ", "Cemre Örer", "Selim Zunluoğlu", "Berfin Nur Tunç", "Nur Karakoç",
     "Yağmur Karakuş", "Gizem Öztürk", "Hande Öztürk")
 ] + [dict(ad=n, rol="uye", dept=("dijital",)) for n in (
-    "Beyza Selen Çiçek", "Tuğçenur Çiçek", "Zeynep Düzmen", "Özgecan Esen", "Nilay Çabuk", "Can Ahmet Özgüven")
+    "Tuğçenur Çiçek", "Zeynep Düzmen", "Özgecan Esen", "Nilay Çabuk", "Can Ahmet Özgüven")
 ] + [dict(ad=n, rol="uye", dept=("proje",)) for n in (
     "Hatice Zehre Kışla", "Mehmet Kılıç", "Ayşe Naz Özen", "Betül Doğan", "İrem Gündoğdu", "Reşat Karamanlıoğlu",
     "Kübra Yıldırım", "Derya Nur Kılıç")
@@ -415,13 +417,13 @@ def flipbook_html(_m):
 
 
 def lit_html(m):
-    """<p class="lit" data-lit>metin</p> → her kelime ayrı span: kaydırdıkça sırayla aydınlanır (main.js)."""
-    words = m.group(2).split()
-    return f'<p{m.group(1)}>' + " ".join(f'<span class="lw">{w}</span>' for w in words) + "</p>"
+    """<p|h2 class="lit" data-lit>metin</p|h2> → her kelime ayrı span: kaydırdıkça sırayla aydınlanır (main.js)."""
+    tag, words = m.group(1), m.group(3).split()
+    return f'<{tag}{m.group(2)}>' + " ".join(f'<span class="lw">{w}</span>' for w in words) + f"</{tag}>"
 
 
 def render_body(body):
-    body = re.sub(r'<p( class="lit" data-lit)>(.*?)</p>', lit_html, body, flags=re.S)
+    body = re.sub(r'<(p|h2)( class="lit" data-lit)>(.*?)</\1>', lit_html, body, flags=re.S)
     if not any(k.startswith("dergi-") for k in MANIFEST):
         # dergi sayfaları henüz yok (kaynak/dergi boş): çevirmeli bölümü ve ona giden bağlantıları gizle
         body = re.sub(r'\n*<section class="fb" id="dergi-oku".*?</section>', "", body, flags=re.S)
