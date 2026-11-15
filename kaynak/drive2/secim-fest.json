@@ -103,6 +103,20 @@
    "alt_tr": "Oturum arasında otel lobisinde fotoğraf çekip sohbet eden katılımcılar",
    "focus": "two people centre; wooden door frames at both edges can be cropped",
    "score": 6
+  },
+  {
+   "file": "fest25__panel-risk.jpg",
+   "driveId": null,
+   "folder": "ekibin gönderdiği fotoğraf (2026-11-15)",
+   "w": 2000,
+   "h": 1126,
+   "orientation": "landscape",
+   "kind": "scale",
+   "desc": "Wide view of the Risk Assessment panel at Lawment Fest'25: three panelists seated on stage under the big screen with their names and titles, audience in the foreground",
+   "alt_tr": "Lawment Fest'25'te Risk Değerlendirme Paneli: sahnede üç panelist, arkada isim ve unvanların yazdığı panel ekranı",
+   "focus": "panelists lower centre; screen top",
+   "camera": false,
+   "score": 5.9
   }
  ],
  "fest26": [
@@ -248,12 +262,28 @@
    "alt_tr": "Antik kabartma duvar önünde Lawment Fest'26 fotoğraf çerçevesiyle poz veren katılımcı",
    "focus": "frame centre; relief wall left; photographer right edge",
    "score": 7
+  },
+  {
+   "file": "fest26__grup-havuz.jpg",
+   "driveId": null,
+   "folder": "ekibin gönderdiği fotoğraf (2026-11-15)",
+   "w": 2000,
+   "h": 1335,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Large group of Lawment Fest'26 attendees in sunglasses and bucket hats posing at the pool terrace in front of Lawment Fest 26 banners",
+   "alt_tr": "Lawment Fest'26 katılımcıları havuz başında, Lawment Fest bayraklarının önünde toplu fotoğraf çektiriyor",
+   "focus": "group centre; banners both sides",
+   "camera": false,
+   "score": 6.9
   }
  ],
  "hero": [
   "fest26__DSC01815.JPEG",
   "fest26__DSC00727.JPG",
   "fest25__DSCF6472.JPG",
-  "fest25__DSCF6075.JPG"
+  "fest25__DSCF6075.JPG",
+  "fest25__panel-risk.jpg",
+  "fest26__grup-havuz.jpg"
  ]
 }
