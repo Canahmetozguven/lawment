@@ -29,13 +29,13 @@ Kök klasördeki eski taslak HTML'ler ve `assets/` klasörü yedek olarak duruyo
 
 Sitede yer tutucu (sarı, kesik çizgili kutu) kalmadı. Kontrol: `grep -r 'class="ph"' src/pages` sonuç vermemeli.
 
-Banka adı ve IBAN sitede **yayımlanmıyor** (dernek istemedi). Destek & İletişim sayfasında bağış için e-posta adresi ve iletişim formundaki "Bağış" konusu gösteriliyor; hesap bilgisi eklenirse `iletisim.html` içindeki "Nasıl destek olabilirsin" kutusuna yazılır.
+Banka adı ve IBAN sitede **yayımlanmıyor** (dernek istemedi); bağış e-posta üzerinden, kontrollü yürütülür (dernek kararı, 15 Kasım 2026). Destek & İletişim sayfasında bağış için e-posta adresi ve iletişim formundaki "Bağış" konusu gösteriliyor; hesap bilgisi eklenirse `iletisim.html` içindeki "Nasıl destek olabilirsin" kutusuna yazılır.
 
-KVKK sayfası dernek kararına göre yazıldı: site ziyaretçilerden kişisel veri **toplamaz** (formlar yalnızca e-posta taslağı açar, analiz/reklam aracı yok); Wix'in teknik olarak işlediği veriler Wix'in kendi politikasındadır, dernek bunları kullanmaz. Bu varsayımlar değişirse (sunucuya gönderen form, Google Analytics, reklam pikseli vb. eklenirse) metin güncellenmeli. Sayfa hâlâ arama motorlarına kapalı (`noindex`); bir hukukçu metni okuyunca `src/pages/kvkk.html` başındaki `noindex: true` satırı kaldırılabilir.
+KVKK sayfası dernek kararına göre yazıldı: site ziyaretçilerden kişisel veri **toplamaz** (formlar yalnızca e-posta taslağı açar, analiz/reklam aracı yok); Wix'in teknik olarak işlediği veriler Wix'in kendi politikasındadır, dernek bunları kullanmaz. Bu varsayımlar değişirse (sunucuya gönderen form, Google Analytics, reklam pikseli vb. eklenirse) metin güncellenmeli. Dernek yönetimi 15 Kasım 2026'da sayfanın arama motorlarına açılmasına karar verdi; `noindex` satırı kaldırıldı ve sayfa site haritasına girdi. Metni bir hukukçunun okuyup okumadığı kayıtlı değil; ileride okutulursa değişiklikler `src/pages/kvkk.html` içinde yapılır.
 
 ## Teyit edilmesi gerekenler
 
-- **İzinler:** Fotoğraf, ad, alıntı ve logolar için kimden neyin teyit edileceği `IZIN-KONTROL.md` dosyasında; kısa mesaj metinleri de orada. Şu an hiçbirinin izni dosyalanmış değil.
+- **İzinler:** Fotoğraf, ad, alıntı ve logolar için kimden neyin teyit edileceği `IZIN-KONTROL.md` dosyasında; kısa mesaj metinleri de orada. Dernek yönetimi 15 Kasım 2026'da izinler konusunda sorun görmediğini bildirdi; ayrı ayrı yazılı onaylar dosyalanmış değil.
 - **Kurum logoları:** Kurumların kendi sitelerinden (GE HealthCare, Maersk, MSC: Wikimedia Commons'taki resmi dosyalar) alındı. Yayından önce kurumlardan logo kullanım izni teyit edilmeli.
 - **Congar Law:** İnternette bulunamadı; şeritte yazıyla duruyor. Logo ya da web sitesi gelirse eklenir.
 - **EDAC:** Enerji Uyuşmazlıkları Tahkim Merkezi (arbitrationcenter.org) olarak kabul edildi. Farklı bir EDAC ise logo değişmeli.
@@ -99,4 +99,4 @@ Bu liste www.lawment.org'un 15 Kasım 2026'daki site haritasından alındı (say
 
 ### Arama motoru dosyaları
 
-`python build.py` artık `site/sitemap.xml`, `site/robots.txt` ve `site/404.html` üretiyor. Site haritasında `noindex` sayfalar (KVKK) yok. Önizleme betiği (`kaynak/onizleme.py`) önizlemede robots.txt'yi `Disallow: /` ile değiştirir ve site haritasını siler; yani bu üç dosya yalnızca gerçek yayında geçerlidir. 404 sayfası köke bağlı çalışır: Wix özel 404 sayfasını ayrıca ister, oraya aynı metin elle konabilir.
+`python build.py` artık `site/sitemap.xml`, `site/robots.txt` ve `site/404.html` üretiyor. Site haritasında `noindex` işaretli sayfalar yer almaz (şu an hepsi sitede). Önizleme betiği (`kaynak/onizleme.py`) önizlemede robots.txt'yi `Disallow: /` ile değiştirir ve site haritasını siler; yani bu üç dosya yalnızca gerçek yayında geçerlidir. 404 sayfası köke bağlı çalışır: Wix özel 404 sayfasını ayrıca ister, oraya aynı metin elle konabilir.

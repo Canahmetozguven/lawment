@@ -1,6 +1,6 @@
 # Yayın öncesi izin kontrolü
 
-Sitede kişilerin adı, fotoğrafı ve kurum logoları yer alıyor. Bir kişinin adı ya da yüzü tanınabilen fotoğrafı kişisel veridir (KVKK); kurum logoları ise marka hakkı konusudur. Bu liste, lawment.org'a geçmeden önce kimden neyin teyit edileceğini gösterir. **Hiçbirinin izni şu an dosyalanmış değil.** Yayın kararı dernek yönetimine aittir.
+Sitede kişilerin adı, fotoğrafı ve kurum logoları yer alıyor. Bir kişinin adı ya da yüzü tanınabilen fotoğrafı kişisel veridir (KVKK); kurum logoları ise marka hakkı konusudur. Bu liste, lawment.org'a geçmeden önce kimden neyin teyit edileceğini gösterir. **Dernek yönetimi 15 Kasım 2026'da izinler konusunda sorun görmediğini bildirdi.** Kişi kişi yazılı onaylar dosyalanmış değil; isteyen için aşağıdaki mesaj metinleri ve kayıt önerisi duruyor. Yayın kararı dernek yönetimine aittir.
 
 Önizleme adresi arama motorlarına kapalıdır (noindex ve robots.txt) ama bağlantıyı bilen herkes açabilir; bu yüzden izin konusu lawment.org'a geçmeden önce de geçerlidir.
 
@@ -8,16 +8,16 @@ Sitede kişilerin adı, fotoğrafı ve kurum logoları yer alıyor. Bir kişinin
 
 | Ne | Nerede | Adet | Kimden teyit | Durum |
 |---|---|---|---|---|
-| Etkinlik fotoğrafları: Lawfest'24 | Ana sayfa, Projeler, Arşiv, Biz Kimiz | 6 | Çekimi yapan kişi/kurum; fotoğraftaki katılımcılar, konuşmacılar | Teyit edilmedi |
-| Etkinlik fotoğrafları: Comparena | Ana sayfa, Projeler, Biz Kimiz | 7 | Aynı | Teyit edilmedi |
-| Etkinlik fotoğrafları: Back in Lawment | Ana sayfa, Projeler, Biz Kimiz | 7 | Aynı | Teyit edilmedi |
-| Etkinlik fotoğrafları: Fest'25 | Ana sayfa, Projeler, Arşiv | 6 | Aynı | Teyit edilmedi |
-| Etkinlik fotoğrafları: Fest'26 | Ana sayfa, Projeler, Arşiv, Biz Kimiz | 11 | Aynı | Teyit edilmedi |
-| Ekip grup fotoğrafı | Biz Kimiz | 1 | Fotoğraftaki gönüllüler | Teyit edilmedi |
-| Gönüllü adları ve görevleri | Biz Kimiz | 42 kişi | Her gönüllü | Teyit edilmedi |
-| Yönetim Kurulu Başkanı adı | Alt bilgi, Biz Kimiz, İletişim, Kurumlar İçin | 1 kişi | Kendisi | Teyit edilmedi |
-| Adı geçen konuklar ve jüri | Projeler (Lawment Inspired, Comparena jürisi), Ana sayfa ve Arşiv (alıntı) | 4 kişi | Her biri: ad, unvan ve alıntı | Teyit edilmedi |
-| Kurum logoları (11 kurum) | Ana sayfa şeridi, Kurumlar İçin | 11 | Her kurumun iletişim ya da marka birimi | Teyit edilmedi |
+| Etkinlik fotoğrafları: Lawfest'24 | Ana sayfa, Projeler, Arşiv, Biz Kimiz | 6 | Çekimi yapan kişi/kurum; fotoğraftaki katılımcılar, konuşmacılar | Yönetim sorun görmedi |
+| Etkinlik fotoğrafları: Comparena | Ana sayfa, Projeler, Biz Kimiz | 7 | Aynı | Yönetim sorun görmedi |
+| Etkinlik fotoğrafları: Back in Lawment | Ana sayfa, Projeler, Biz Kimiz | 7 | Aynı | Yönetim sorun görmedi |
+| Etkinlik fotoğrafları: Fest'25 | Ana sayfa, Projeler, Arşiv | 6 | Aynı | Yönetim sorun görmedi |
+| Etkinlik fotoğrafları: Fest'26 | Ana sayfa, Projeler, Arşiv, Biz Kimiz | 11 | Aynı | Yönetim sorun görmedi |
+| Ekip grup fotoğrafı | Biz Kimiz | 1 | Fotoğraftaki gönüllüler | Yönetim sorun görmedi |
+| Gönüllü adları ve görevleri | Biz Kimiz | 42 kişi | Her gönüllü | Yönetim sorun görmedi |
+| Yönetim Kurulu Başkanı adı | Alt bilgi, Biz Kimiz, İletişim, Kurumlar İçin | 1 kişi | Kendisi | Yönetim sorun görmedi |
+| Adı geçen konuklar ve jüri | Projeler (Lawment Inspired, Comparena jürisi), Ana sayfa ve Arşiv (alıntı) | 4 kişi | Her biri: ad, unvan ve alıntı | Yönetim sorun görmedi |
+| Kurum logoları (11 kurum) | Ana sayfa şeridi, Kurumlar İçin | 11 | Her kurumun iletişim ya da marka birimi | Yönetim sorun görmedi |
 | Kurum adları (yalnızca yazı) | Arşiv, "Yer alan kurumlar" | çok sayıda | Genelde izin gerekmez (yazım ekip tarafından teyit edildi) | Gerekmez |
 
 Kurum logoları: ACTECON, Arkas, Baker McKenzie, EDAC, GE HealthCare, Kale Grubu, Maersk, MSC, QNB Finansbank, SOCAR. Congar Law logosuz, yalnızca yazıyla duruyor.
