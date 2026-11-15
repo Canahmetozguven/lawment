@@ -437,10 +437,96 @@
    "focus": "group centre; keep full width",
    "camera": true,
    "score": 5.3
+  },
+  {
+   "file": "backin__ATA03168.JPG",
+   "driveId": "1mKXY2DiAHXoYp-tgNAxg45WxuHMuuSfz",
+   "folder": "FOTOĞRAFLAR ( TÜM ETKİNLİKLER ) / BACK IN LAWMENT",
+   "w": 7008,
+   "h": 4672,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Large cheerful group posing in front of the Lawment backdrop, many raising arms in an L sign",
+   "alt_tr": "Back in Lawment'te Lawment panosunun önünde kollarını havaya kaldırıp 'L' işareti yapan neşeli katılımcı grubu",
+   "focus": "group centre; backdrop top",
+   "camera": true,
+   "score": 5.2
+  },
+  {
+   "file": "backin__ATA03230.JPG",
+   "driveId": "1fSP3gS18aTNjO6AoYDQNdVC1zACrj3XF",
+   "folder": "FOTOĞRAFLAR ( TÜM ETKİNLİKLER ) / BACK IN LAWMENT",
+   "w": 7008,
+   "h": 4672,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Large evenly lit group of about fourteen attendees standing in front of the Lawment backdrop",
+   "alt_tr": "Back in Lawment'te Lawment panosunun önünde toplu fotoğraf çektiren katılımcılar",
+   "focus": "group centre; keep full width",
+   "camera": true,
+   "score": 5.1
+  },
+  {
+   "file": "backin__ATA02746.JPG",
+   "driveId": "1R_Zj6EuZg8fGpvG_nqdjJ4FCqr5GG1_G",
+   "folder": "FOTOĞRAFLAR ( TÜM ETKİNLİKLER ) / BACK IN LAWMENT",
+   "w": 7008,
+   "h": 4672,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Group of about ten attendees posing in front of the Lawment backdrop",
+   "alt_tr": "Back in Lawment'te Lawment panosu önünde poz veren katılımcı grubu",
+   "focus": "group centre",
+   "camera": true,
+   "score": 5.0
+  },
+  {
+   "file": "backin__ATA02913.JPG",
+   "driveId": "1QmaeayGjoz5cWPtxE3kOfhZVpV9EAJye",
+   "folder": "FOTOĞRAFLAR ( TÜM ETKİNLİKLER ) / BACK IN LAWMENT",
+   "w": 4672,
+   "h": 7008,
+   "orientation": "portrait",
+   "kind": "people",
+   "desc": "Four women posing in front of the Lawment backdrop, evenly lit portrait",
+   "alt_tr": "Back in Lawment'te Lawment panosu önünde poz veren dört katılımcı",
+   "focus": "faces upper third",
+   "camera": true,
+   "score": 4.9
+  },
+  {
+   "file": "backin__ATA02741.JPG",
+   "driveId": "1MnYFUJzsp0R3ciZb7CB0Fz8YSABsrMIa",
+   "folder": "FOTOĞRAFLAR ( TÜM ETKİNLİKLER ) / BACK IN LAWMENT",
+   "w": 4672,
+   "h": 7008,
+   "orientation": "portrait",
+   "kind": "people",
+   "desc": "Three women posing in front of the Lawment backdrop, bright portrait",
+   "alt_tr": "Back in Lawment'te Lawment panosu önünde poz veren üç katılımcı",
+   "focus": "faces upper third",
+   "camera": true,
+   "score": 4.8
+  },
+  {
+   "file": "backin__ATA03023.JPG",
+   "driveId": "1EfN_QABXaYLopfEvVFfsh3M_T0LD5fKY",
+   "folder": "FOTOĞRAFLAR ( TÜM ETKİNLİKLER ) / BACK IN LAWMENT",
+   "w": 7008,
+   "h": 4672,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Smiling attendee holding a camera, party lights behind",
+   "alt_tr": "Back in Lawment'te elinde fotoğraf makinesiyle gülümseyen bir katılımcı",
+   "focus": "face centre-right",
+   "camera": true,
+   "score": 4.7
   }
  ],
  "hero": [
   "backin__IMG_8870.HEIC",
-  "backin__DSCF0988.JPG"
+  "backin__DSCF0988.JPG",
+  "backin__ATA03168.JPG",
+  "backin__ATA03230.JPG"
  ]
 }

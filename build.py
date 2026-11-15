@@ -291,6 +291,10 @@ def initials(name):
     return parts[0][0] + parts[-1][0]
 
 
+# Sitede "gönüllü" sayısı olarak geçen her yer bu listeden gelir ({{gonullu}}); elle yazılmış rakam kalmasın diye.
+GONULLU = len({m["ad"] for m in TEAM})
+
+
 def team_count(dept=None, role=None):
     return sum(1 for m in TEAM
                if (dept is None or dept in m["dept"]) and (role is None or ROLE_GROUP[m["rol"]] == role))
@@ -438,6 +442,7 @@ def render_body(body):
     body = body.replace("<x-orgs></x-orgs>", orgs_marquee(None))
     body = body.replace("<x-team></x-team>", team_html(None))
     body = re.sub(r"<x-board role=\"\w+\"></x-board>", board_html, body)
+    body = body.replace("{{gonullu}}", str(GONULLU))
     body = re.sub(r"<x-count dept=\"([\w-]*)\"></x-count>", lambda m: str(team_count(dept=m.group(1) or None)), body)
     body = re.sub(r"<x-count role=\"(\w+)\"></x-count>", lambda m: str(team_count(role=m.group(1))), body)
     body = re.sub(r"<x-img\s+([^>]*)>", picture, body)

@@ -1468,3 +1468,6 @@ html:not(.anim) .fb-caps li { opacity: 1; translate: none; }  /* animasyonsuz h�
 /* yatay şeritlerde (p-gallery) yüzler üstte kalıyor: kadrajı yukarı kaydır */
 .p-gallery li:nth-child(2) img { object-position: 50% 14%; }
 .p-gallery li:nth-child(3) img { object-position: 50% 18%; }
+/* dikey portreler kare kutularda: yüzler üst üçte birde kalıyor */
+.g--b img { object-position: 50% 22%; }
+.p-gallery li:nth-child(1) img { object-position: 50% 20%; }
