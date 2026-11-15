@@ -489,12 +489,41 @@ def main():
     # @font-face tanımları ayrı bir istek olmasın diye style.css'in başına eklenir
     css = (SRC / "assets" / "fonts.css").read_text(encoding="utf-8") + (SRC / "assets" / "style.css").read_text(encoding="utf-8")
     (OUT / "assets" / "style.css").write_text(css, encoding="utf-8", newline="\n")
+    indexable = []
     for page in sorted((SRC / "pages").glob("*.html")):
         meta, body = parse(page)
         out = head(meta, page.name) + mark_english(header(meta.get("nav", "")) + render_body(body) + FOOTER)
         (OUT / page.name).write_text(out, encoding="utf-8", newline="\n")
         print("yazıldı:", page.name)
+        if not meta.get("noindex"):
+            indexable.append("" if page.name == "index.html" else page.name)
+    write_site_files(indexable)
     sync_images()
+
+
+NOT_FOUND = """<section class="page-head">
+  <div class="wrap">
+    <p class="label">404</p>
+    <h1>Aradığın sayfa bulunamadı.</h1>
+    <p class="lead">Adres değişmiş ya da yanlış yazılmış olabilir. Ana sayfadan devam edebilir ya da bize yazabilirsin.</p>
+    <p><a class="btn btn--primary" href="index.html">Ana sayfaya dön</a> <a class="btn" href="iletisim.html">İletişim</a></p>
+  </div>
+</section>
+"""
+
+
+def write_site_files(indexable):
+    """sitemap.xml, robots.txt ve 404.html. kaynak/onizleme.py önizlemede robots.txt'yi 'Disallow: /' ile
+    değiştirir ve sitemap.xml'i siler; bu dosyalar yalnızca gerçek yayın içindir."""
+    urls = "".join(f"  <url><loc>{SITE_URL}{name}</loc></url>\n" for name in indexable)
+    (OUT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n",
+        encoding="utf-8", newline="\n")
+    (OUT / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8", newline="\n")
+    meta = {"title": "Sayfa bulunamadı", "description": "Aradığın sayfa bulunamadı. Lawment Derneği ana sayfasına dönebilirsin.", "noindex": "true"}
+    (OUT / "404.html").write_text(head(meta, "404.html") + header("") + NOT_FOUND + FOOTER, encoding="utf-8", newline="\n")
+    print("yazıldı: sitemap.xml, robots.txt, 404.html")
 
 
 def sync_images():

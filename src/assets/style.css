@@ -1175,7 +1175,7 @@ html:not(.anim) .fb-caps li { opacity: 1; translate: none; }  /* animasyonsuz h�
 .lit-sec { padding-block: clamp(80px, 14vw, 180px); }
 .lit-sec .wrap { display: grid; gap: 24px; }
 .lit { font: 800 clamp(1.9rem, 4.6vw, 4rem)/1.1 var(--f-display); letter-spacing: -.03em; max-width: 24ch; text-wrap: pretty; }
-.anim .lit .lw { color: color-mix(in srgb, var(--ink) 18%, var(--paper)); transition: color .35s ease; }
+.anim .lit .lw { color: color-mix(in srgb, var(--ink) 50%, var(--paper)); transition: color .35s ease; } /* aydınlanmamış kelime de büyük yazı kontrastını (3:1) geçer */
 .anim .lit .lw.on { color: var(--ink); }
 
 /* 2. sabitlenip yatay kayan galeri */

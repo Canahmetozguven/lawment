@@ -35,33 +35,27 @@ KVKK sayfası dernek kararına göre yazıldı: site ziyaretçilerden kişisel v
 
 ## Teyit edilmesi gerekenler
 
+- **İzinler:** Fotoğraf, ad, alıntı ve logolar için kimden neyin teyit edileceği `IZIN-KONTROL.md` dosyasında; kısa mesaj metinleri de orada. Şu an hiçbirinin izni dosyalanmış değil.
 - **Kurum logoları:** Kurumların kendi sitelerinden (GE HealthCare, Maersk, MSC: Wikimedia Commons'taki resmi dosyalar) alındı. Yayından önce kurumlardan logo kullanım izni teyit edilmeli.
 - **Congar Law:** İnternette bulunamadı; şeritte yazıyla duruyor. Logo ya da web sitesi gelirse eklenir.
 - **EDAC:** Enerji Uyuşmazlıkları Tahkim Merkezi (arbitrationcenter.org) olarak kabul edildi. Farklı bir EDAC ise logo değişmeli.
-- **Görsel yorumları:** Yeni yıl süslü, LAWMENT balonlu toplu fotoğraf "Back in Lawment" görseli olarak kullanıldı; rekabet hukuku sunumu yapan takım fotoğrafı Comparena için kullanıldı. Fotoğraflar başka etkinliklere aitse söyleyin.
+- **Fotoğraflar:** Etkinlik fotoğrafları derneğin Drive klasörlerinden seçildi ve ekibin geri bildirimine göre değiştirildi; hangi fotoğrafın hangi etkinliğe ait olduğu Drive klasör adlarından alındı. Ana sayfa kapağında Fest'26 grup fotoğrafı ve Fest'25 panel fotoğrafı var.
 - **Eski Wix görselleri:** Ana sayfa ve ekip fotoğraflarında Wix'in gömülü karartması vardı; kırpılıp parlaklığı açıldı.
 
 ## Ölçümler
 
 Playwright: 8 sayfa × 1366/390 px × açık/koyu temada yatay taşma, kırık bağlantı ve konsol hatası yok. Reduced-motion açıkken animasyon çalışmıyor; JS kapalıyken bütün metinler görünür.
 
-Lighthouse (mobil, sıkıştırmalı yerel sunucu, bu bilgisayardaki Kaspersky'nin eklediği script engellenerek):
+Lighthouse (mobil, 15 Kasım 2026; bu bilgisayardaki Kaspersky'nin eklediği script engellenerek):
 
-| Sayfa | Performans | Erişilebilirlik | En iyi uygulamalar | SEO |
+| Ölçüm | Sayfalar | Performans | Erişilebilirlik | En iyi uygulamalar |
 |---|---|---|---|---|
-| Ana Sayfa | 79 | 100 | 82* | 100 |
-| Biz Kimiz | 85 | 100 | 82* | 100 |
-| Projeler | 84 | 100 | 82* | 100 |
-| Arşiv | 86 | 100 | 82* | 100 |
-| Katıl | 87 | 100 | 82* | 100 |
-| Kurumlar İçin | 85 | 100 | 82* | 100 |
-| Destek & İletişim | 87 | 100 | 82* | 100 |
-| KVKK | 89 | 100 | 82* | 63** |
+| HTTPS önizleme (GitHub Pages, sıkıştırmalı) | Ana Sayfa, Biz Kimiz, Projeler, Destek & İletişim | 98, 98, 99, 99 | 96* | 100 |
+| Yerel sunucu | 8 sayfanın tamamı | | 100 | 100 |
 
-\* Tek eksik HTTPS; yerel sunucu HTTP. Wix'te HTTPS ile 100 olması beklenir.
-\*\* Taslak olduğu için bilerek `noindex`.
+Ana sayfa LCP 2,4 sn, Projeler 2,0 sn; yerleşim kayması ve toplam engelleme süresi 0. \* Ana sayfadaki 96, kaydırdıkça aydınlanan cümlenin soluk kelimelerindendi; renk koyulaştırıldı, düzeltmeden sonra yerel ölçümde 100. SEO puanı önizlemede 66: önizleme bilerek `noindex` olduğu için ("Sayfa dizine eklenmeye kapalı"); gerçek yayında 100 beklenir. PageSpeed Insights'ın herkese açık API'si bugün kota hatası verdi (429), bu yüzden ölçüm Lighthouse ile yapıldı. lawment.org'da yayından sonra https://pagespeed.web.dev adresinden bir kez daha ölçülmeli.
 
-Performansın 90'ın altında kalma nedeni: Lighthouse yavaş 4G simüle ediyor ve sayfalar büyük fotoğraf, fotoğraf kolajı ve dört font ailesi taşıyor. Ana sayfa en görsel ağır sayfa (hero + ikinci fotoğraf + festival kolajı + 9 logo). Yapılan iyileştirmeler: fontlar siteye gömüldü ve küçültüldü, başlık fontu önceden yükleniyor (yerleşim kayması 0.118 → 0.004), logolar 260 KB → 87 KB, görseller AVIF/WebP ve ekran boyutuna göre.
+Performans için yapılanlar: fontlar siteye gömüldü ve küçültüldü, başlık fontu önceden yükleniyor, logolar küçültüldü, görseller AVIF/WebP ve ekran boyutuna göre.
 
 ## Geçici Wix sitesi
 
@@ -90,5 +84,19 @@ Etkinlik fotoğrafları Drive'daki etkinlik klasörlerinden seçildi (`kaynak/dr
 | `/iletişim` (`/ileti%C5%9Fim`) | `/iletisim.html` |
 | `/copy-of-terms-conditions` (eski KVKK) | `/kvkk.html` |
 | `/terms-and-conditions` | `/kvkk.html` (şartlar sayfası yazılana kadar) |
+| `/lawment-fest-2026` | `/projeler.html#lawment-fest` |
+| `/ekibimiz` | `/biz-kimiz.html#ekibimiz` |
+| `/etkinliklerimiz/lawmentfest` | `/projeler.html#lawment-fest` |
+| `/etkinliklerimiz/comparena` | `/projeler.html#comparena` |
+| `/etkinliklerimiz/backinlaw` | `/projeler.html#back-in-lawment` |
+| `/etkinliklerimiz/lansman` | `/arsiv.html` |
+| `/donation-thank-you-page` | `/iletisim.html#destek` |
+| `/accessibility-statement` | `/` (erişilebilirlik beyanı sayfası yok) |
+| `/search` | `/` |
+| `/profile/*` (üç üye profili ve etkinlik sayfaları) | `/biz-kimiz.html` |
 
-Wix'teki diğer eski sayfa adresleri yükleme öncesi Wix panelinden listelenip bu tabloya eklenmeli.
+Bu liste www.lawment.org'un 15 Kasım 2026'daki site haritasından alındı (sayfalar, etkinlikler ve üye profilleri). Eski sitede başka bir bölüm varsa yükleme günü Wix panelinden bakılıp eklenmeli. Eski `/iletişim` adresi Wix'te `i̇letişim` (noktalı i, birleşik nokta) olarak kayıtlı; yönlendirmede iki yazım da tanımlanmalı.
+
+### Arama motoru dosyaları
+
+`python build.py` artık `site/sitemap.xml`, `site/robots.txt` ve `site/404.html` üretiyor. Site haritasında `noindex` sayfalar (KVKK) yok. Önizleme betiği (`kaynak/onizleme.py`) önizlemede robots.txt'yi `Disallow: /` ile değiştirir ve site haritasını siler; yani bu üç dosya yalnızca gerçek yayında geçerlidir. 404 sayfası köke bağlı çalışır: Wix özel 404 sayfasını ayrıca ister, oraya aynı metin elle konabilir.

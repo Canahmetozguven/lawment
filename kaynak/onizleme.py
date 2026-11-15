@@ -50,6 +50,7 @@ def main():
             assert NOINDEX in t, page.name
             page.write_text(t, encoding="utf-8", newline="\n")
         (out / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8", newline="\n")
+        (out / "sitemap.xml").unlink(missing_ok=True)  # önizleme canlı alan adını işaret eden site haritası taşımaz
         (out / ".nojekyll").write_text("", encoding="utf-8")  # Jekyll'i kapatır; dosyalar olduğu gibi sunulur
 
         msg = f"Önizleme güncellendi ({datetime.now():%Y-%m-%d %H:%M})"
