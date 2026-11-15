@@ -423,9 +423,24 @@
    "focus": "three people centre; balloons top",
    "camera": false,
    "score": 5.4
+  },
+  {
+   "file": "backin__DSCF0988.JPG",
+   "driveId": "1k5kqJhGRibKs2nJeIqmXfwmQMvOg_fqM",
+   "folder": "FOTOĞRAFLAR ( TÜM ETKİNLİKLER ) / BACK IN LAWMENT",
+   "w": 4416,
+   "h": 2488,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Group of eleven attendees in smart clothes posing in a marble hotel lobby, evenly lit, everyone facing the camera",
+   "alt_tr": "Back in Lawment'te şık kıyafetlerle toplu fotoğraf çektiren katılımcılar",
+   "focus": "group centre; keep full width",
+   "camera": true,
+   "score": 5.3
   }
  ],
  "hero": [
-  "backin__IMG_8870.HEIC"
+  "backin__IMG_8870.HEIC",
+  "backin__DSCF0988.JPG"
  ]
 }
