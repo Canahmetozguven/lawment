@@ -367,6 +367,9 @@ def photos_html(m):
     items = items[start:start + int(a.get("count", len(items)))]
     if "kind" in a:
         items = [it for it in PHOTOS.get(a["set"], []) if it["kind"] == a["kind"]][: int(a.get("count", 99))]
+    if "names" in a:  # names="backin-05,backin-01": sıra puana göre değil, yazdığın gibi
+        pool = {it["name"]: it for it in PHOTOS.get(a["set"], [])}
+        items = [pool[n.strip()] for n in a["names"].split(",")]
     sizes = a.get("sizes", "(max-width: 760px) 80vw, 30vw")
     lis = "".join(
         f'<li class="zoom"><div class="media" data-reveal="clip"><x-img name="{it["name"]}" alt="{html.escape(it["alt"], quote=True)}" sizes="{sizes}"></div></li>'

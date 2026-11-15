@@ -393,6 +393,39 @@
    "focus": "people top half; cake bottom",
    "camera": false,
    "score": 7
+  },
+  {
+   "file": "backin__IMG_8870.HEIC",
+   "driveId": "1KOEQqLqiRckVgTulVESbkzYCErNzPdA2",
+   "folder": "BACK IN LAWMENT / Back in 2025 / Fotoğraflar",
+   "year": 2025,
+   "w": 4032,
+   "h": 3024,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Group of attendees in smart clothes posing in front of the silver LAWMENT balloon letters and the gold number 2",
+   "alt_tr": "Back in Lawment 2025'te LAWMENT harfli balonların önünde toplu fotoğraf çektiren katılımcılar",
+   "focus": "group centre; balloon letters above",
+   "camera": false,
+   "score": 5.5
+  },
+  {
+   "file": "backin__IMG_8665.HEIC",
+   "driveId": "1doTClvVS3usYLPMjsLuMEo9qdlcGFRLM",
+   "folder": "BACK IN LAWMENT / Back in 2025 / Fotoğraflar",
+   "year": 2025,
+   "w": 2268,
+   "h": 4032,
+   "orientation": "portrait",
+   "kind": "people",
+   "desc": "Three attendees posing in front of the silver LAWMENT balloon letters and a gold number 2",
+   "alt_tr": "Back in Lawment 2025'te LAWMENT balonları ve altın rengi 2 rakamı önünde poz veren üç katılımcı",
+   "focus": "three people centre; balloons top",
+   "camera": false,
+   "score": 5.4
   }
+ ],
+ "hero": [
+  "backin__IMG_8870.HEIC"
  ]
 }

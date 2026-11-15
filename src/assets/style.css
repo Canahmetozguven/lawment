@@ -1453,3 +1453,18 @@ html:not(.anim) .fb-caps li { opacity: 1; translate: none; }  /* animasyonsuz h�
 .project h2.h2--long { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.04; }
 /* ana sayfa misyon: başlığın altındaki açıklama */
 .lit-sec .lead { max-width: 58ch; color: var(--muted); }
+
+/* ---------- arşiv: dört yıllık rakam şeridi ve uzun kurum listeleri ---------- */
+@media (max-width: 760px) {
+  .head-stats--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .head-stats--4 div { gap: 6px; }
+  .head-stats--4 dd { font-size: 1.6rem; }
+}
+.t-facts .t-wide { grid-column: 1 / -1; }
+.t-facts .t-wide dd { font-weight: 400; line-height: 1.65; }
+
+/* ---------- fotoğraf kadrajı: kesilen yüzler ---------- */
+.media--right img { object-position: 72% 50%; }
+/* yatay şeritlerde (p-gallery) yüzler üstte kalıyor: kadrajı yukarı kaydır */
+.p-gallery li:nth-child(2) img { object-position: 50% 14%; }
+.p-gallery li:nth-child(3) img { object-position: 50% 18%; }
