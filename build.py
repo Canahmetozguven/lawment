@@ -295,6 +295,17 @@ def initials(name):
 GONULLU = len({m["ad"] for m in TEAM})
 
 
+def dept_note():
+    """Departman kartlarının toplamı gönüllü sayısından büyükse (bir kişi birden çok departmanda), nedenini söyleyen not."""
+    toplam = sum(1 for m in TEAM for _ in m["dept"])
+    fazla = toplam - GONULLU
+    if fazla <= 0:
+        return ""
+    kim = "Bir üyemiz" if fazla == 1 else f"{fazla} üyemiz"
+    return (f'<p class="muted dept-note">{kim} birden fazla departmanda görev aldığı için departman sayılarının toplamı ({toplam}) '
+            f'gönüllü sayısından ({GONULLU}) fazladır.</p>')
+
+
 def team_count(dept=None, role=None):
     return sum(1 for m in TEAM
                if (dept is None or dept in m["dept"]) and (role is None or ROLE_GROUP[m["rol"]] == role))
@@ -443,6 +454,7 @@ def render_body(body):
     body = body.replace("<x-team></x-team>", team_html(None))
     body = re.sub(r"<x-board role=\"\w+\"></x-board>", board_html, body)
     body = body.replace("{{gonullu}}", str(GONULLU))
+    body = body.replace("{{dept_note}}", dept_note())
     body = re.sub(r"<x-count dept=\"([\w-]*)\"></x-count>", lambda m: str(team_count(dept=m.group(1) or None)), body)
     body = re.sub(r"<x-count role=\"(\w+)\"></x-count>", lambda m: str(team_count(role=m.group(1))), body)
     body = re.sub(r"<x-img\s+([^>]*)>", picture, body)

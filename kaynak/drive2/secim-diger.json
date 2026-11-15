@@ -10,7 +10,7 @@
    "orientation": "landscape",
    "kind": "scale",
    "desc": "Wide view of the open-air amphitheatre stage: speaker presenting before a full audience, Lawment and LawFest banners",
-   "alt_tr": "Açık hava amfi tiyatro sahnesinde konuşmacıyı dinleyen kalabalık LawFest katılımcıları",
+   "alt_tr": "Açık hava amfi tiyatro sahnesinde konuşmacıyı dinleyen kalabalık Lawfest katılımcıları",
    "focus": "stage centre-right; audience heads in lower third",
    "camera": true,
    "score": 9
@@ -25,7 +25,7 @@
    "orientation": "landscape",
    "kind": "stage",
    "desc": "Speaker on stage beside a Competition Law slide, LawFest and Lawment banners and lectern",
-   "alt_tr": "LawFest sahnesinde rekabet hukuku sunumu yapan konuşmacı, arkada LawFest ve Lawment bayrakları",
+   "alt_tr": "Lawfest sahnesinde rekabet hukuku sunumu yapan konuşmacı, arkada Lawfest ve Lawment bayrakları",
    "focus": "speaker centre-left, slide right",
    "camera": true,
    "score": 8
@@ -130,7 +130,7 @@
    "orientation": "landscape",
    "kind": "people",
    "desc": "Big festival group photo on the beach under a clear sky",
-   "alt_tr": "Sahilde toplu fotoğraf çektiren LawFest katılımcıları",
+   "alt_tr": "Sahilde toplu fotoğraf çektiren Lawfest katılımcıları",
    "focus": "group centre; sky top",
    "camera": true,
    "score": 8

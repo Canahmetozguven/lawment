@@ -1471,3 +1471,6 @@ html:not(.anim) .fb-caps li { opacity: 1; translate: none; }  /* animasyonsuz h�
 /* dikey portreler kare kutularda: yüzler üst üçte birde kalıyor */
 .g--b img { object-position: 50% 22%; }
 .p-gallery li:nth-child(1) img { object-position: 50% 20%; }
+
+/* biz kimiz: departman toplamı notu */
+.dept-note { margin: 18px 0 0; font-size: .9rem; max-width: 62ch; }
