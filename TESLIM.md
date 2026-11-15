@@ -1,6 +1,6 @@
 # Lawment sitesi: teslim notu
 
-Yayına hazır site `site/` klasöründe. 8 sayfa: Ana Sayfa, Biz Kimiz, Projeler, Arşiv, Katıl, Kurumlar İçin, Destek & İletişim, KVKK (taslak).
+Yayına hazır site `site/` klasöründe. 8 sayfa: Ana Sayfa, Biz Kimiz, Projeler, Arşiv, Katıl, Kurumlar İçin, Destek & İletişim, KVKK.
 Canlı siteye ve Wix'teki mevcut siteye dokunulmadı.
 
 ## Siteyi yerelde açmak ve güncellemek
@@ -25,18 +25,13 @@ powershell -File kaynak/lighthouse.ps1            # Lighthouse
 
 Kök klasördeki eski taslak HTML'ler ve `assets/` klasörü yedek olarak duruyor, yeni site bunları kullanmıyor.
 
-## Yer tutucular (sitede sarı, kesik çizgili kutu)
+## Yer tutucular
 
-| Sayfa | Eksik bilgi |
-|---|---|
-| Ana Sayfa | Lawment Fest'26 katılımcı sayısı (katılım çubuğu) |
-| Projeler | Fest'26 katılımcı sayısı · Lawment Fest 27 tarih ve yer · Comparena 27 tarihi · Comparena başvuru tarihleri ve takım kuralları · Back in Lawment tarih ve yer |
-| Arşiv | 2026 programına eklenecek diğer başlıklar · 2026 katılımcı sayısı · 2026'da yer alan kurumlar · 2027 tarih ve yerler |
-| KVKK | Çerez/ölçüm araçları · hukuki sebep eşleştirmesi · barındırma ve e-posta sağlayıcıları, yurt dışı aktarım dayanağı · saklama süreleri · KEP adresi · çerez politikası · güncelleme tarihi |
+Sitede yer tutucu (sarı, kesik çizgili kutu) kalmadı. Kontrol: `grep -r 'class="ph"' src/pages` sonuç vermemeli.
 
 Banka adı ve IBAN sitede **yayımlanmıyor** (dernek istemedi). Destek & İletişim sayfasında bağış için e-posta adresi ve iletişim formundaki "Bağış" konusu gösteriliyor; hesap bilgisi eklenirse `iletisim.html` içindeki "Nasıl destek olabilirsin" kutusuna yazılır.
 
-KVKK sayfası **taslak**: en üstte "hukuki kontrol gerekli" uyarısı var ve arama motorlarına kapalı (`noindex`). Bir hukukçu onaylayınca `src/pages/kvkk.html` başındaki `noindex: true` satırı ve uyarı kutusu kaldırılmalı.
+KVKK sayfası dernek kararına göre yazıldı: site ziyaretçilerden kişisel veri **toplamaz** (formlar yalnızca e-posta taslağı açar, analiz/reklam aracı yok); Wix'in teknik olarak işlediği veriler Wix'in kendi politikasındadır, dernek bunları kullanmaz. Bu varsayımlar değişirse (sunucuya gönderen form, Google Analytics, reklam pikseli vb. eklenirse) metin güncellenmeli. Sayfa hâlâ arama motorlarına kapalı (`noindex`); bir hukukçu metni okuyunca `src/pages/kvkk.html` başındaki `noindex: true` satırı kaldırılabilir.
 
 ## Teyit edilmesi gerekenler
 
