@@ -134,6 +134,36 @@
    "focus": "group centre; sky top",
    "camera": true,
    "score": 8
+  },
+  {
+   "file": "lawfest24__IMG_6585.JPG",
+   "driveId": "1axhZ4Gi0q4WJ2ynh3qSc1hqpWBvOYe30",
+   "folder": "LAWFEST'24 / Fotoğraflar / 3. GÜN",
+   "year": 2024,
+   "w": 6960,
+   "h": 4640,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Attendee in a white bucket hat and leather jacket photographing a session with a camera, sunny courtyard",
+   "alt_tr": "Lawfest'24'te bir oturumu fotoğraf makinesiyle çeken şapkalı katılımcı",
+   "focus": "face centre; camera right",
+   "camera": false,
+   "score": 6.5
+  },
+  {
+   "file": "lawfest24__IMG_6587.JPG",
+   "driveId": "1VxL5oKjQ7mSEbulis58eN-fNkswRm0vt",
+   "folder": "LAWFEST'24 / Fotoğraflar / 3. GÜN",
+   "year": 2024,
+   "w": 6960,
+   "h": 4640,
+   "orientation": "landscape",
+   "kind": "people",
+   "desc": "Attendees listening at tables during the beachside session, a woman with glasses looking toward the speaker",
+   "alt_tr": "Lawfest'24 sahil oturumunu masalarda dinleyen katılımcılar",
+   "focus": "woman with glasses centre",
+   "camera": false,
+   "score": 6.4
   }
  ],
  "comparena": [
